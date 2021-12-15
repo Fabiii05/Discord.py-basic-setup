@@ -78,13 +78,13 @@ async def on_command_error(ctx, error):
  
 
 #Funktions to load and unload the cogs. 
-#Example: ";unload Example" --> unloads the Example class in cogs/Example.py
+#Example: ";unload Example" --> unloads the Example class in cogs/sample_cog.py
 @bot.command()
 @commands.has_permissions(administrator = True)
 async def load(ctx, extension):
     bot.load_extension(f'cogs.{extension}')
 
-#Example: ";load Example" --> loads the Example class in cogs/Example.py
+#Example: ";load Example" --> loads the Example class in cogs/sample_cog.py
 @bot.command()
 @commands.has_permissions(administrator = True)
 async def unload(ctx, extension):
