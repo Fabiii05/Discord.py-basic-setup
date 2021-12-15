@@ -75,6 +75,26 @@ async def status_task():
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send('Command does not exist!') 
+ 
+
+#Funktions to load and unload the cogs. 
+#Example: ";unload Example" --> unloads the Example class in cogs/Example.py
+@bot.command()
+@commands.has_permissions(administrator = True)
+async def load(ctx, extension):
+    bot.load_extension(f'cogs.{extension}')
+
+#Example: ";load Example" --> loads the Example class in cogs/Example.py
+@bot.command()
+@commands.has_permissions(administrator = True)
+async def unload(ctx, extension):
+    bot.unload_extension(f'cogs.{extension}')
+
+    
+#Adds the scripts with the end named .py from the cogs folder
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        bot.load_extension(f'cogs.{filename[:-3]}')
         
 
 
